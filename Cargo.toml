@@ -1,0 +1,12 @@
+[package]
+name = "exer"
+version = "0.1.0"
+authors = ["4afS <4afs.h1@gmail.com>"]
+edition = "2018"
+license = "MIT"
+descripton = "Automatically identifies the build tool and executes it."
+readme = "README.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
