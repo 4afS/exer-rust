@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["4afS <4afs.h1@gmail.com>"]
 edition = "2018"
 license = "MIT"
-descripton = "Automatically identifies the build tool and executes it."
+descripton = "A run tool that identifies the used build tool."
 readme = "README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
