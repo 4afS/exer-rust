@@ -1,6 +1,8 @@
 extern crate glob;
 
-use std::fs;
+use exer::config::generate_config;
+use exer::types::Config;
+use exer::util::get_matches;
 use std::process::Command;
 
 enum Error {
@@ -11,23 +13,31 @@ enum Error {
 pub fn run() {
     match get_project_root_path() {
         Ok(path) => {
-            let entries = fs::read_dir(&path.trim_end()).unwrap();
-            for entry in entries {
-                match entry {
-                    Ok(file) => println!("{:?}", file),
-                    Err(e) => println!("{:?}", e),
-                }
+            let entries = glob::glob(&format!("{}{}", path.trim_end(), "/*")).unwrap();
+            let file_paths: Vec<_> = entries
+                .into_iter()
+                .filter(|entry| entry.is_ok())
+                .map(|entry| entry.unwrap())
+                .collect();
+            let files_os_str: Vec<_> = file_paths
+                .iter()
+                .filter_map(|x| x.file_name().and_then(|file_name| file_name.to_str()))
+                .collect();
+            let configs: Vec<Config> = generate_config();
+            match get_matches(files_os_str, configs) {
+                Some(config) => println!("{}", config.run_command),
+                None => println!("Error: project not found."),
             }
         }
-        Err(Error::GitCommandNotFound) => println!("git command not found."),
-        Err(Error::DotGitNotFound) => println!(".git directory not found."),
+        Err(Error::GitCommandNotFound) => println!("Error: git command not found."),
+        Err(Error::DotGitNotFound) => println!("Error: .git directory not found."),
     }
 }
 
 fn get_project_root_path() -> Result<String, Error> {
     let output = Command::new("sh")
         .arg("-c")
-        .arg("gi rev-parse --show-toplevel")
+        .arg("git rev-parse --show-toplevel")
         .output();
 
     match output {
