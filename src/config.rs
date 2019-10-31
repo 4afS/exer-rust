@@ -1,5 +1,4 @@
-use super::types::{Config};
-
+use super::types::Config;
 
 pub fn generate_config() -> Vec<Config> {
     vec![
@@ -8,4 +7,3 @@ pub fn generate_config() -> Vec<Config> {
         Config::new(vec!["spago.dhall", ".spago"], "spago run"),
     ]
 }
-

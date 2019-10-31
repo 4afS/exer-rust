@@ -1,4 +1,4 @@
-use super::types::{Config};
+use super::types::Config;
 
 pub fn get_matches(files: Vec<&str>, configs: Vec<Config>) -> Option<Config> {
     for config in configs {
