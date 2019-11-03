@@ -14,7 +14,7 @@ A run tool that identifies the used build tool.
     }
   ```
 
-- Run *at the root directory of the project!*
+- Run **at the root directory of the project!**
   ```sh
   run
   ```
