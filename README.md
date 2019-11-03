@@ -21,7 +21,7 @@ A run tool that identifies the used build tool.
 ## Configuration
 
 | Language | Matches | Command |
-|:--:|:--:|:--:|
+|:--|:--|:--|
 | Rust | Cargo.toml, Cargo.lock | `cargo run` |
 | Scala | build.sbt | `sbt run` |
 | Haskell | stack.yaml, package.yaml | `stack run` |
