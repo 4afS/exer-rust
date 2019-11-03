@@ -19,12 +19,12 @@ pub fn run() {
                 .filter(|entry| entry.is_ok())
                 .map(|entry| entry.unwrap())
                 .collect();
-            let files_os_str: Vec<_> = file_paths
+            let file_names: Vec<&str> = file_paths
                 .iter()
                 .filter_map(|x| x.file_name().and_then(|file_name| file_name.to_str()))
                 .collect();
             let configs: Vec<Config> = generate_config();
-            match get_matches(files_os_str, configs) {
+            match get_matches(file_names, configs) {
                 Some(config) => println!("{}", config.run_command),
                 None => println!("Error: project not found."),
             }
