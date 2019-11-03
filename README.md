@@ -1,7 +1,7 @@
 # exer
 A run tool that identifies the used build tool.
 
-# Usage
+## Usage
 - Add the following to your .bashrc
   ```bash
   run() {
@@ -18,3 +18,12 @@ A run tool that identifies the used build tool.
   ```sh
   run
   ```
+## Configuration
+
+| Language | Matches | Command |
+|:--:|:--:|:--:|
+| Rust | Cargo.toml, Cargo.lock | `cargo run` |
+| Scala | build.sbt | `sbt run` |
+| Haskell | stack.yaml, package.yaml | `stack run` |
+| PureScript | spago.dhall, .spago | `spago run` |
+| Elm | elm.json | `elm reactor` |

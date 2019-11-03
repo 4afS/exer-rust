@@ -13,7 +13,8 @@ enum Error {
 pub fn run() {
     match get_project_root_path() {
         Ok(path) => {
-            let entries = glob::glob(&format!("{}{}", path.trim_end(), "/*")).unwrap();
+            let trimed_path = path.trim_end();
+            let entries = glob::glob(&format!("{}{}", trimed_path, "/*")).unwrap();
             let file_paths: Vec<_> = entries
                 .into_iter()
                 .filter(|entry| entry.is_ok())
@@ -25,7 +26,7 @@ pub fn run() {
                 .collect();
             let configs: Vec<Config> = generate_config();
             match get_matches(file_names, configs) {
-                Some(config) => println!("{}", config.run_command),
+                Some(config) => println!("(cd {} && {})", trimed_path, config.run_command),
                 None => println!("Error: project not found."),
             }
         }
