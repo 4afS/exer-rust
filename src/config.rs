@@ -7,5 +7,6 @@ pub fn generate_config() -> Vec<Config> {
         Config::new(vec!["stack.yaml", "package.yaml"], "stack run"),
         Config::new(vec!["spago.dhall", ".spago"], "spago run"),
         Config::new(vec!["elm.json"], "elm reactor"),
+        Config::new(vec!["build.gradle"], "gradle run"),
     ]
 }
