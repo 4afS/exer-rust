@@ -12,11 +12,15 @@ A run tool that identifies the used build tool.
 
 | Language | Build-tool | Matches | Command |
 |:--|:--|:--|:--|
+| D | Dub | dub.json, dub.sdl | `dub run` |
+| Elm | - | elm.json | `elm reactor` |
+| Go | - | go.mod | `go run` |
+| Haskell | Stack | stack.yaml | `stack run` |
+| Java | gradle | build.gradle | `gradle run` |
+| Kotlin | gradle | build.gradle | `gradle run` |
 | Rust | Cargo | Cargo.toml, Cargo.lock | `cargo run` |
 | Scala | sbt | build.sbt | `sbt run` |
-| Haskell | Stack | stack.yaml, package.yaml | `stack run` |
 | PureScript | spago | spago.dhall, .spago | `spago run` |
-| Elm | elm | elm.json | `elm reactor` |
 
 ## Installation
 - With Rust's package manager cargo, you can install `exer` via:
